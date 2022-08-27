@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Recipes from "../components/Recipes";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
@@ -26,19 +26,24 @@ const containerVariants = {
 };
 
 const RecipesScreen = ({ showSidebar }) => {
-  const APP_ID = "7dbadd22";
-  const APP_KEY = "ae323572d665977e22e1febc2ae22a8f";
+  const APP_ID = process.env.REACT_APP_API_ID;
+  console.log(APP_ID);
+  const APP_KEY = process.env.REACT_APP_API_KEY;
+  console.log(APP_KEY);
   const [recipeData, setRecipeData] = useState({});
   const location = useLocation();
-  console.log(location.pathname);
-  const getRequest = async (query) => {
-    const response = await fetch(
-      `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-    );
-    const data = await response.json();
-    console.log(data);
-    setRecipeData(data);
-  };
+
+  const getRequest = useCallback(
+    async (query) => {
+      const response = await fetch(
+        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
+      );
+      const data = await response.json();
+      console.log(data);
+      setRecipeData(data);
+    },
+    [APP_ID, APP_KEY]
+  );
   useEffect(() => {
     switch (location.pathname) {
       case "/fish":
@@ -56,7 +61,7 @@ const RecipesScreen = ({ showSidebar }) => {
       default:
         getRequest("chicken");
     }
-  }, [location.pathname]);
+  }, [location.pathname, getRequest]);
   return (
     <motion.div
       variants={containerVariants}

@@ -15,9 +15,9 @@ const containerVariants = {
     },
   },
 };
-const RecipeDetailsScreen = ({ showSidebar }) => {
-  const APP_ID = "7dbadd22";
-  const APP_KEY = "ae323572d665977e22e1febc2ae22a8f";
+const RecipeDetailsScreen = () => {
+  const APP_ID = process.env.REACT_APP_API_ID;
+  const APP_KEY = process.env.REACT_APP_API_KEY;
   const params = useParams();
   const [recipe, setRecipe] = useState({});
 
@@ -29,7 +29,7 @@ const RecipeDetailsScreen = ({ showSidebar }) => {
     );
     const data = await response.json();
     setRecipe(data.recipe);
-  }, [recipeId]);
+  }, [recipeId, APP_ID, APP_KEY]);
   useEffect(() => {
     fetchRecipe();
   }, [fetchRecipe]);
