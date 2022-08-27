@@ -1,0 +1,29 @@
+.recipeItem {
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.recipeItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recipeContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+.recipeRate {
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.recipeLabel {
+}

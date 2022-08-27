@@ -1,0 +1,78 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 4444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.logo {
+  width: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.headerList {
+  list-style: none;
+  padding-left: 0;
+  margin-right: 20px;
+}
+@media screen and (max-width: 767px) {
+  .headerList {
+    display: none;
+  }
+}
+.headerListItem .headerListLink {
+  margin-right: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(23, 64, 126, 0.671);
+}
+.headerListLink.header-active {
+  color: rgb(190, 143, 143);
+}
+.headerListLink:hover {
+  transform: scale(1.05);
+  transition: 0.5s all ease-in;
+}
+.menu {
+  margin-right: 20px;
+  cursor: pointer;
+  transform-origin: center;
+  display: none;
+}
+
+.menu span {
+  transition: all 0.2s;
+}
+.menu span:first-of-type,
+.menu span:last-of-type {
+  transform-origin: center;
+}
+.menu.menu-active span:first-of-type {
+  transform: rotate(45deg) translateY(5px);
+}
+.menu.menu-active span:nth-of-type(2) {
+  display: none;
+}
+.menu.menu-active span:last-of-type {
+  transform: rotate(-45deg) translateY(-6px);
+}
+@media screen and (max-width: 767px) {
+  .menu {
+    display: block;
+  }
+}
+.menu span {
+  background-color: #000;
+  margin-bottom: 3px;
+  display: block;
+  width: 30px;
+  height: 4px;
+}
